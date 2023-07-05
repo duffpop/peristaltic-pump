@@ -1,0 +1,54 @@
+const instructionData = {
+  steps: [
+    {
+      stepId: 'step1',
+      instruction: 'Identify all the parts of the pump. Refer to the tools_and_materials.txt file for a detailed list.',
+      nextStep: 'step2',
+      prevStep: null,
+      startOver: 'step1',
+      error: 'Error: Missing parts. Refer to troubleshooting.txt for help.'
+    },
+    {
+      stepId: 'step2',
+      instruction: 'Assemble the pump body. Follow the diagram in the electronics_basics.txt file.',
+      nextStep: 'step3',
+      prevStep: 'step1',
+      startOver: 'step1',
+      error: 'Error: Incorrect assembly. Refer to troubleshooting.txt for help.'
+    },
+    // ... more steps
+  ],
+  displayInstruction: function(stepId) {
+    const step = this.steps.find(step => step.stepId === stepId);
+    if (!step) {
+      console.log('Error: Invalid step. Please start over.');
+      return;
+    }
+    console.log(step.instruction);
+  },
+  nextStep: function(currentStepId) {
+    const currentStep = this.steps.find(step => step.stepId === currentStepId);
+    if (!currentStep || !currentStep.nextStep) {
+      console.log('Error: Invalid step. Please start over.');
+      return;
+    }
+    this.displayInstruction(currentStep.nextStep);
+  },
+  prevStep: function(currentStepId) {
+    const currentStep = this.steps.find(step => step.stepId === currentStepId);
+    if (!currentStep || !currentStep.prevStep) {
+      console.log('Error: Invalid step. Please start over.');
+      return;
+    }
+    this.displayInstruction(currentStep.prevStep);
+  },
+  startOver: function() {
+    this.displayInstruction('step1');
+  },
+  error: function(errorMessage) {
+    console.log(errorMessage);
+  }
+};
+
+// Start the guide
+instructionData.displayInstruction('step1');

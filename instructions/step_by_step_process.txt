@@ -1,0 +1,53 @@
+var instructionData = {
+    steps: [
+        {
+            stepId: 'step1',
+            instruction: 'Identify all the parts of the pump. Refer to the tools_and_materials.txt file for images and descriptions.',
+            nextStep: 'step2',
+            prevStep: null,
+            error: null
+        },
+        {
+            stepId: 'step2',
+            instruction: 'Start by assembling the pump housing. Follow the diagram in the electronics_basics.txt file.',
+            nextStep: 'step3',
+            prevStep: 'step1',
+            error: null
+        },
+        {
+            stepId: 'step3',
+            instruction: 'Attach the motor to the pump housing. Make sure it is secure before moving on.',
+            nextStep: 'step4',
+            prevStep: 'step2',
+            error: null
+        },
+        //... more steps
+    ]
+};
+
+function displayInstruction(stepId) {
+    var step = instructionData.steps.find(function(step) {
+        return step.stepId === stepId;
+    });
+
+    if (!step) {
+        console.log('error', 'Invalid stepId: ' + stepId);
+        return;
+    }
+
+    console.log(step.instruction);
+
+    if (step.nextStep) {
+        console.log('nextStep', step.nextStep);
+    }
+
+    if (step.prevStep) {
+        console.log('prevStep', step.prevStep);
+    }
+
+    if (step.error) {
+        console.log('error', step.error);
+    }
+}
+
+displayInstruction('step1'); // Start from the first step

@@ -1,0 +1,32 @@
+const instructionData = require('./instructionData');
+
+const displayInstruction = (instructionId) => {
+    const instruction = instructionData.find(instruction => instruction.id === instructionId);
+    if (!instruction) {
+        console.error('error', 'Instruction not found');
+        return;
+    }
+    console.log(instruction.content);
+}
+
+// Basics of Electronics
+displayInstruction('basic1');
+console.log('nextStep');
+displayInstruction('basic2');
+console.log('nextStep');
+displayInstruction('basic3');
+console.log('nextStep');
+displayInstruction('basic4');
+console.log('nextStep');
+displayInstruction('basic5');
+console.log('nextStep');
+displayInstruction('basic6');
+console.log('nextStep');
+displayInstruction('basic7');
+console.log('nextStep');
+displayInstruction('basic8');
+console.log('nextStep');
+displayInstruction('basic9');
+console.log('nextStep');
+displayInstruction('basic10');
+console.log('startOver');

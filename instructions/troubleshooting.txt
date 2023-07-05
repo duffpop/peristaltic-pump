@@ -1,0 +1,41 @@
+const instructionData = require('./instructionData');
+
+const troubleshootingGuide = {
+  "troubleshoot1": {
+    "troubleshootId": "troubleshoot1",
+    "description": "Pump is not turning on",
+    "solution": "Check if the power supply is connected properly."
+  },
+  "troubleshoot2": {
+    "troubleshootId": "troubleshoot2",
+    "description": "Pump is not pumping water",
+    "solution": "Check if the water source is connected and the pump is primed."
+  },
+  "troubleshoot3": {
+    "troubleshootId": "troubleshoot3",
+    "description": "Pump is making a loud noise",
+    "solution": "Check if the pump is properly installed and there are no loose parts."
+  },
+  "troubleshoot4": {
+    "troubleshootId": "troubleshoot4",
+    "description": "Pump is overheating",
+    "solution": "Ensure the pump is not running dry and it has proper ventilation."
+  }
+};
+
+function displayInstruction(troubleshootId) {
+  const troubleshootingTip = troubleshootingGuide[troubleshootId];
+  if (!troubleshootingTip) {
+    console.error('error', 'Invalid troubleshootId');
+    return;
+  }
+  console.log(troubleshootingTip.description);
+  console.log(troubleshootingTip.solution);
+}
+
+instructionData.troubleshooting = troubleshootingGuide;
+
+module.exports = {
+  displayInstruction,
+  troubleshootingGuide
+};
