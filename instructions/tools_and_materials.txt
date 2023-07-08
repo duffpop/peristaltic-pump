@@ -1,0 +1,33 @@
+var instructionData = require('./instructionData');
+
+var toolsAndMaterials = {
+    "materialId1": {
+        "name": "Screwdriver",
+        "description": "Used to drive screws into place",
+        "image": "screwdriver.jpg"
+    },
+    "materialId2": {
+        "name": "Wrench",
+        "description": "Used to tighten or loosen nuts and bolts",
+        "image": "wrench.jpg"
+    },
+    "materialId3": {
+        "name": "Pump Parts",
+        "description": "Various parts needed to assemble the pump",
+        "image": "pump_parts.jpg"
+    },
+    // Add more tools and materials as needed
+};
+
+instructionData.toolsAndMaterials = toolsAndMaterials;
+
+function displayInstruction(materialId) {
+    var material = instructionData.toolsAndMaterials[materialId];
+    console.log("Name: " + material.name);
+    console.log("Description: " + material.description);
+    console.log("Image: " + material.image);
+}
+
+module.exports = {
+    displayInstruction: displayInstruction
+};

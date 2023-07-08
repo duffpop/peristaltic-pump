@@ -1,0 +1,37 @@
+const instructionData = require('./instructionData');
+
+const safetyGuidelines = [
+  {
+    safetyId: 'safety1',
+    guideline: 'Always disconnect the power before working on the pump.'
+  },
+  {
+    safetyId: 'safety2',
+    guideline: 'Wear protective gloves and eyewear when handling electronic components.'
+  },
+  {
+    safetyId: 'safety3',
+    guideline: 'Ensure your work area is well-ventilated when soldering.'
+  },
+  {
+    safetyId: 'safety4',
+    guideline: 'Never touch the pump while it is operating.'
+  },
+  {
+    safetyId: 'safety5',
+    guideline: 'Always follow the instructions and safety guidelines provided by the manufacturer.'
+  }
+];
+
+instructionData.safetyGuidelines = safetyGuidelines;
+
+function displayInstruction(safetyId) {
+  const guideline = instructionData.safetyGuidelines.find(g => g.safetyId === safetyId);
+  if (!guideline) {
+    console.error('error: Invalid safetyId');
+    return;
+  }
+  console.log(guideline.guideline);
+}
+
+module.exports = displayInstruction;
